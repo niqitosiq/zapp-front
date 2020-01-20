@@ -1,6 +1,8 @@
 <template lang="pug">
 include ../node_modules/bemto.pug/bemto.pug
-+b.main#app
++b.main#app(:class='{"no-scroll": $store.state.aboutOpenned===true}')
+  .container
+    Header
   transition(name="fade")
     router-view
   //Modals
@@ -18,6 +20,7 @@ import store from './store';
 import VModal from 'vue-js-modal';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
+import Header from "@/components/Header.vue";
 Vue.use(VModal)
 Vue.component("svgi", svgi);
 Vue.component("Loading", Loading);
@@ -27,6 +30,9 @@ export default {
   created(){
   },
   components: {
+    Header
+  },
+  watch: {
   }
 };
 </script>
@@ -45,6 +51,10 @@ h1,h2
   font-weight: 600
 body
   padding-bottom: 100px
+  overflow: hidden scroll
+  height: 100%
+  position: relative
+#app.no-scroll
 .container
   display: flex
   width: 960px

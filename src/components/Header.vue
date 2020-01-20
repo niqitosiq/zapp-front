@@ -1,7 +1,7 @@
 <template lang="pug">
 include ../../node_modules/bemto.pug/bemto.pug
 +b.HEADER.header
-  +e.IMG.logo(src="images/logo.svg")
+  +e.IMG.logo(src="/images/logo.svg")
   +e.block
     transition(name="fade_top")
       +e.UL.menu(v-if="burger")
@@ -52,7 +52,7 @@ export default {
     position: relative
   &__logo
     +below(480px)
-      height: 60px
+      height: 65px
   &__block
     +flex
     +below(780px)
@@ -105,6 +105,8 @@ export default {
     +flex(flex-end, center)
     +below(780px)
       justify-content: flex-end
+    +below(330px)
+      display: none
 
   &__placeholder
     font-weight: 500

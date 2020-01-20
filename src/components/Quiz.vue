@@ -51,6 +51,8 @@ export default {
 		border-top-right-radius: 0
 		border-bottom-right-radius: 0
 		height: max-content
+		position: sticky
+		top: 10%
 	&__item
 		padding-left: 20px
 		padding-top: 10px

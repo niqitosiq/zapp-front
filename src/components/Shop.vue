@@ -15,24 +15,14 @@ include ../../node_modules/bemto.pug/bemto.pug
 		+e.instructions
 			span Инструкция по покупке
 			svgi(name="question")
-	+b.items
-		+e.H3.title Выберите товар:
-		+e.P.tip Нажмите на товар, чтобы узнать о нём больше
-		+e.wrapper
-			Item(
-				v-for="item in $store.state.shopList"
-				:name="item.name"
-				:price="item.price"
-				:discount="item.discount"
-				:id="item.id"
-				:dir="item.dir"
-			)
-
+	
+	transition(name="fade")
+		router-view
 </template>
 
 <script>
-import Item from "@/components/Item.vue";
 
+import About from "@/views/About.vue";
 export default {
   name: "",
   data: function () {
@@ -41,32 +31,20 @@ export default {
   	}
   },
   components: {
-  	Item
+  	About
   }
 };
 </script>
 
 <style lang="sass"> 
 @import "@/assets/sass/all";
-.items
-	padding-left: 40px
-	padding-right: 40px
-	&__title
-		margin-top: 25px
-		font-size: 18px
-		font-weight: 400
-	&__wrapper
-		+flex
-		flex-wrap: wrap
-		margin-top: 60px
-	&__tip
-		color: $gray
 .shop
 	width: 100%
 	box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.25)
 	border-radius: 20px
 	border-top-left-radius: 0
-	padding-bottom: 600px
+	padding-bottom: 10px
+	position: relative
 	.header
 		padding-top: 22px
 		padding-bottom: 22px

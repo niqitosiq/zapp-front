@@ -1,9 +1,9 @@
 <template lang="pug">
 include ../../node_modules/bemto.pug/bemto.pug
-.item
+.item(:ref="id" @click="about(id);" :class="{notfull: full===false}")
 	.image
-		img.n1(:src='"items/" + dir + "/2.png"')
-		img.n2(:src='"items/" + dir + "/1.png"')
+		img.n1(:src='"/items/" + dir + "/2.png"')
+		img.n2(:src='"/items/" + dir + "/1.png"')
 	.descr
 		h4.name {{name}}
 		p.old(v-if="discount!=0") 
@@ -13,18 +13,44 @@ include ../../node_modules/bemto.pug/bemto.pug
 		.buynow
 			| Купить
 </template>
+<script>
+export default {
+  name: "",
+  props: {
+  	"name": String,
+  	"price": Number,
+  	"discount": Number,
+  	"id": Number,
+  	"dir": String,
+  	"full": Boolean
+  },
+  data: function () {
+  	return {
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+  	}
+  },
+  methods: {
+  	about: function (idref) {
+  		if (!this.full){
+	  		this.$router.push("/about/" + idref)
+	  	}
+  	}
+  },
+};
+</script>
+
 <style scoped lang="sass">
 @import "@/assets/sass/all";
 .item
 	width: calc(33% - 10px)
 	margin-right: 17.5px
-	height: 350px
 	margin-bottom: 40px
+	height: 500px
 	position: relative
 	cursor: pointer
-	&:nth-child(3)
+	&.notfull
+		height: 350px
+	&:nth-child(3n+0)
 		margin-right: 0
 	p
 		margin: 0
@@ -45,28 +71,31 @@ include ../../node_modules/bemto.pug/bemto.pug
 		&:before
 			content: ''
 			position: absolute
-			width: 120%
+			width: 105%
 			height: 2px
 			top: 50%
-			transform: scaleX(1)
-			transform-origin: left center
-			transition: transform ease-in-out .1s
 			left: 0
 			background: $error
-	&:hover
+	&:not(.notfull)
+		cursor: auto
+		.image img
+			&.n1
+     			animation: item1 3s ease-in-out infinite alternate
+			&.n2
+     			animation: item2 3s ease-in-out infinite alternate
+		
+	&.notfull:hover
+		.old
+			opacity: 0
+		.new
+			transform: translateY(-40px)
+		.buynow
+			transform: translateY(0%)
 		.image img
 			&.n1
 				transform: translateY(-25px)
 			&.n2
 				transform: translate(-50%, -45px)
-		.old
-			opacity: 0
-			&:before
-				transform: scaleX(0)
-		.new
-			transform: translateY(-40px)
-		.buynow
-			transform: translateY(0%)
 	.descr
 		position: absolute
 		bottom: 0
@@ -77,7 +106,7 @@ include ../../node_modules/bemto.pug/bemto.pug
 		padding-right: 20px
 		overflow: hidden
 		color: $light
-		background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%,  $accent 90%)
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%,rgba(255, 255, 255, 0) 30%,$accent 60%, $accent 80%)
 	.buynow
 		width: 100%
 		position: absolute
@@ -91,7 +120,10 @@ include ../../node_modules/bemto.pug/bemto.pug
 		font-weight: 800
 		font-size: 20px
 		transform: translateY(100%)
-		transition: transform ease-in-out .3s .1s
+		transition: transform ease-in-out .4s .1s, background ease-in-out .3s
+		border-radius: 20px 20px 0 0 
+		&:hover
+			background: #63ABFF
 	.image
 		width: 100%
 		height: 100%
@@ -119,20 +151,3 @@ include ../../node_modules/bemto.pug/bemto.pug
 
 </style>
 
-<script>
-export default {
-  name: "",
-  props: {
-  	"name": String,
-  	"price": Number,
-  	"discount": Number,
-  	"id": Number,
-  	"dir": String,
-  },
-  data: function () {
-  	return {
-
-  	}
-  }
-};
-</script>
