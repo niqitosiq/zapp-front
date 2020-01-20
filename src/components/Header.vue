@@ -27,7 +27,7 @@ include ../../node_modules/bemto.pug/bemto.pug
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "Header",
   data: function(){
     return {
       burger: 0,
@@ -83,6 +83,7 @@ export default {
       padding-bottom: 30px
       background-color: $accent
       margin-top: 30px
+      z-index: 10
 
   &__list-item
     text-decoration: none

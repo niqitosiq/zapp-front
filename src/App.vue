@@ -50,6 +50,7 @@ h1,h2
   justify-content: space-between
   align-items: center
   min-width: 260px
+
   &.row
     flex-direction: column
     align-items: flex-start
