@@ -1,0 +1,17 @@
+
+@import 'node_modules/rupture-sass/rupture';
+
+=flex($vertical: null, $horizontal: null, $direction: row)
+  display: flex
+  flex-direction: $direction
+  @if $vertical != null
+    align-items: $vertical
+  @if $horizontal != null
+    justify-content: $horizontal
+
+=font($alias, $name)
+  @font-face
+    font-family: $alias
+    src: url("fonts/" + $name + ".woff2") format("woff2"), url("fonts/" + $name + ".woff") format("woff")
+    font-weight: normal
+    font-style: normal
