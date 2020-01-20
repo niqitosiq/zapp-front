@@ -22,9 +22,10 @@ export default new Vuex.Store({
   			"name": "Вещи и деньги",
   			"id": 3
   		}
-
-
-  	]
+  	],
+    servers: [
+      {id: 1, name: "Survival"}, {id: 2, name: "Skyblock"},
+    ]
   },
   mutations: {},
   actions: {},
