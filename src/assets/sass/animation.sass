@@ -15,6 +15,15 @@
   transform: translateY(50px)
   opacity: 0
 
+.fadeD-enter-active, .fadeD-leave-active 
+  transition-property: opacity, transform
+  transition-duration: .25s
+  opacity: 1
+.fadeD-enter-active 
+  transition-delay: .25s
+.fadeD-enter, .fadeD-leave-active 
+  opacity: .01
+
 
 @keyframes circleUp
   0%

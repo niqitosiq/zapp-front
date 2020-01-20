@@ -3,7 +3,7 @@ include ../node_modules/bemto.pug/bemto.pug
 +b.main#app(:class='{"no-scroll": $store.state.aboutOpenned===true}')
   .container
     Header
-  transition(name="fade")
+  transition(name="fadeD")
     router-view
   //Modals
   Loading( 

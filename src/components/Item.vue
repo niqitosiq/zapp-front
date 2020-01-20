@@ -78,6 +78,7 @@ export default {
 			background: $error
 	&:not(.notfull)
 		cursor: auto
+		width: 100%
 		.image img
 			&.n1
      			animation: item1 3s ease-in-out infinite alternate

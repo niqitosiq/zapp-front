@@ -7,14 +7,40 @@ include ../../node_modules/bemto.pug/bemto.pug
         svgi(name="arrow")
       span Вернуться назад
     +e.wrapper
-      Item(
-        :name="descr.name"
-        :price="descr.price"
-        :discount="descr.discount"
-        :id="descr.id"
-        :dir="descr.dir"
-        full=true
-      )
+      +e.left
+        Item(
+          :name="descr.name"
+          :price="descr.price"
+          :discount="descr.discount"
+          :id="descr.id"
+          :dir="descr.dir"
+          full=true
+        )
+        +e.buynow Купить
+      +e.description
+        +e.H3.title Возможности набора:
+        +b.UL.kit
+          +e.LI.item 
+            +e.SPAN.command /kit premium
+            +e.SPAN.descr - набор вещей "премиум"
+          +e.LI.item 
+            +e.SPAN.command /tpa
+            +e.SPAN.descr - Телепортироваться к точке 
+          +e.LI.item 
+            +e.SPAN.command /vanish
+            +e.SPAN.descr - Изчезнуть
+          +e.LI.item 
+            +e.SPAN.command /kit premium3
+            +e.SPAN.descr - набор вещей "премиум3"
+          +e.LI.item 
+            +e.SPAN.command /kit premium2
+            +e.SPAN.descr - набор вещей "премиум2"
+          +e.LI.item 
+            +e.SPAN.command /kit premium1
+            +e.SPAN.descr - набор вещей "премиум2123123"
+        +e.delimetr
+        +e.H4 А так же возможности всех предыдущих наборов.
+        
 </template>
 
 <script>
@@ -42,7 +68,7 @@ include ../../node_modules/bemto.pug/bemto.pug
 @import "@/assets/sass/all";
 .about
   width: 100%
-  padding-top: 30px
+  padding-top: 60px
   &__back 
     cursor: pointer
     span
@@ -54,5 +80,43 @@ include ../../node_modules/bemto.pug/bemto.pug
     transform: rotate(-180deg)
   &__wrapper
     width: 100%
-    margin-top: 100px
+    margin-top: 60px
+    +flex
+    .item
+      flex-shrink: 0
+  &__left
+    width: 320px
+    flex-shrink: 0
+
+  &__description
+    margin-left: 60px
+  &__buynow
+    width: 100%
+    height: 50px
+    +flex(center, center)
+    background: $accent
+    color: #fff
+    border-radius: 20px
+    cursor: pointer
+    transition: background ease-in-out .3s
+    &:hover
+      background: $accentb
+  .kit
+    padding-left: 0
+    &__item
+      list-style: none
+      padding-left: 0
+      margin-bottom: 30px
+
+    &__command
+      background: #CFE5FF
+      padding-top: 5px
+      padding-bottom: 5px
+      padding-left: 20px
+      padding-right: 20px
+      margin-right: 20px
+    &__descr
+      color: $grayt
+  &__title
+    margin-bottom: 50px
 </style>
