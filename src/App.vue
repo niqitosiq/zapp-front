@@ -43,6 +43,8 @@ export default {
   font-family: Qanelas
 h1,h2
   font-weight: 600
+body
+  padding-bottom: 100px
 .container
   display: flex
   width: 960px

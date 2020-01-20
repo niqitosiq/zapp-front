@@ -37,8 +37,7 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="sass">
+<style lang="sass">
 @import "@/assets/sass/all";
 .quiz
 	margin-top: 30px
@@ -51,6 +50,7 @@ export default {
 		border-radius: 20px
 		border-top-right-radius: 0
 		border-bottom-right-radius: 0
+		height: max-content
 	&__item
 		padding-left: 20px
 		padding-top: 10px

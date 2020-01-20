@@ -15,33 +15,73 @@ include ../../node_modules/bemto.pug/bemto.pug
 		+e.instructions
 			span Инструкция по покупке
 			svgi(name="question")
+	+b.items
+		+e.H3.title Выберите товар:
+		+e.P.tip Нажмите на товар, чтобы узнать о нём больше
+		+e.wrapper
+			Item(
+				v-for="item in $store.state.shopList"
+				:name="item.name"
+				:price="item.price"
+				:discount="item.discount"
+				:id="item.id"
+				:dir="item.dir"
+			)
+
 </template>
 
 <script>
+import Item from "@/components/Item.vue";
+
 export default {
   name: "",
   data: function () {
   	return {
   		activeServer: 1,
   	}
+  },
+  components: {
+  	Item
   }
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="sass"> 
+<style lang="sass"> 
 @import "@/assets/sass/all";
+.items
+	padding-left: 40px
+	padding-right: 40px
+	&__title
+		margin-top: 25px
+		font-size: 18px
+		font-weight: 400
+	&__wrapper
+		+flex
+		flex-wrap: wrap
+		margin-top: 60px
+	&__tip
+		color: $gray
 .shop
 	width: 100%
 	box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.25)
 	border-radius: 20px
 	border-top-left-radius: 0
+	padding-bottom: 600px
 	.header
 		padding-top: 22px
 		padding-bottom: 22px
 		padding-left: 40px
 		padding-right: 40px
 		+flex(center, space-between)
+		position: relative
+		&:after
+			content: ''
+			position: absolute
+			bottom: 0
+			left: 2.5%
+			width: 95%
+			height: 1px
+			background: #ccc
 		&__title
 			margin: 0
 			font-size: 18px
@@ -74,7 +114,6 @@ export default {
 			transition: opacity ease-in-out .3s
 			+flex(center, center)
 			cursor: pointer
-
 			span 
 				margin-right: 10px
 				font-size: 14px

@@ -3,7 +3,7 @@ include ../../node_modules/bemto.pug/bemto.pug
 .home
 	.container
 		Header
-	.container
+	//.container
 		Banner
 	.container
 		Quiz
