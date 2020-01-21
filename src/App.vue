@@ -28,6 +28,8 @@ Vue.component("Loading", Loading);
 export default {
   name: "App",
   created(){
+    this.$store.dispatch("setType", {id:1});
+    this.$store.dispatch("setServer", {id:1});
   },
   components: {
     Header

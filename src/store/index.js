@@ -2,50 +2,35 @@ import Vue from "vue";
 import Vuex from "vuex";
 
 Vue.use(Vuex);
-
-export default new Vuex.Store({
-  state: {
-    paddingTop: 100,
-  	loading: 0,
-  	types: [
-  		{
-  			"icon": "crown",
-  			"name": "Привелегии",
-  			"id": 1
-  		},
-  		{
-  			"icon": "judge",
-  			"name": "Разбан",
-  			"id": 2
-  		},
-  		{
-  			"icon": "money",
-  			"name": "Вещи и деньги",
-  			"id": 3
-  		}
-  	],
-    servers: [
-      {id: 1, name: "Survival"}, {id: 2, name: "Skyblock"},
-    ],
-    shopList: [
-      {dir: "1", name: "Премиум", id: 1, price: 300, discount: 50},
-      {dir: "1", name: "Премиум2", id: 2, price: 500, discount: 30},
-      {dir: "1", name: "Премиум3", id: 3, price: 600, discount: 70},
-      {dir: "1", name: "Премиум4", id: 4, price: 900, discount: 10},
-      {dir: "1", name: "Премиум5", id: 5, price: 300, discount: 50},
-      {dir: "1", name: "Премиум6", id: 6, price: 500, discount: 30},
-      {dir: "1", name: "Премиум7", id: 7, price: 600, discount: 70},    ],
-    aboutId: 0,
-    aboutOpenned: false,
-  },
-  mutations: {
-
-  },
-  actions: {
-    openAbout: function({state}, payload){
+function builder(data){
+  return new Vuex.Store({
+    state: {
+      aboutId: 0,
+      html: data,
+      type: 1,
+      server: 1,
+      Items: [],
     },
-    closeAbout: function({state}, payload){
-    }
-  },
-  modules: {}
-});
+    mutations: {
+    },
+    actions: {
+      setType: function({state, dispatch}, payload){
+        state.type = payload.id;
+        dispatch("changeItems");
+      },
+      setServer: function({state, dispatch}, payload){
+        state.server = payload.id;
+        dispatch("changeItems");
+      },
+      changeItems: function({state}){
+        let type = state.type;
+        let server = state.server;
+        state.Items = state.html.items[type][server];
+      }
+    },
+    modules: {}
+  });
+}
+
+
+export default builder;

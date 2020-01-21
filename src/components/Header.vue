@@ -19,7 +19,7 @@ include ../../node_modules/bemto.pug/bemto.pug
     +e.online
       +e.adress
         +e.SPAN.placeholder ip:
-        +e.SPAN.ip mc.zapp.su
+        +e.SPAN.ip {{ $store.state.html.ip }}
         +e.status
     
 

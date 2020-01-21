@@ -56,10 +56,9 @@ include ../../node_modules/bemto.pug/bemto.pug
       descr: '',
     }
   },
-   methods: {
-  },
   mounted(){
-    let data = this.$store.state.shopList;
+    let data = this.$store.state.Items;
+    console.log(data)
     this.descr = data.filter((item)=>{console.log(item); return (item.id == this.$route.params.id)})[0]
   }
 };

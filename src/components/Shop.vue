@@ -5,9 +5,9 @@ include ../../node_modules/bemto.pug/bemto.pug
 		+e.panel
 			+e.H3.title Выберите сервер: 
 			+e.item(
-				v-for="item in $store.state.servers" 
-				:class="{active: item.id==activeServer}"
-				@click="activeServer = item.id"
+				v-for="item in $store.state.html.servers" 
+				:class="{active: item.id==$store.state.server}"
+				@click="choozeServer(item.id)"
 				)
 				+e.icon
 					svgi(name="approve")
@@ -19,16 +19,16 @@ include ../../node_modules/bemto.pug/bemto.pug
 	transition(name="fade")
 		router-view
 </template>
-
+choozeServer
 <script>
 
 import About from "@/views/About.vue";
 export default {
   name: "",
-  data: function () {
-  	return {
-  		activeServer: 1,
-  	}
+  methods: {
+  	choozeServer: function(id) {
+  		this.$store.dispatch("setServer", {id: id});
+  	}  	
   },
   components: {
   	About

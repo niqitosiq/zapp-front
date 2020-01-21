@@ -32,7 +32,7 @@ const router = new VueRouter({
           resolve({ x: 0, y: 0 })
         }
         
-      }, 250)
+      }, 350)
     })
   },
   routes

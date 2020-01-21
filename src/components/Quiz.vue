@@ -2,13 +2,13 @@
 include ../../node_modules/bemto.pug/bemto.pug
 +b.quiz
 	+e.sidebar
-		+e.item(v-for="item in $store.state.types" :class="{active: item.id===active}" @click="choozeType(item.id)")
+		+e.item(v-for="item in $store.state.html.types" :class="{active: item.id===$store.state.type}" @click="choozeType(item.id)")
 			+e.icon
 				svgi(:name="item.icon")
 			+e.H2.name {{item.name}}
 			+e.arrow
 				svgi(name="arrow")
-
+		
 	+e.main
 		Shop
 </template>
@@ -20,17 +20,12 @@ import Shop from "@/components/Shop.vue";
   
 export default {
   name: "Quiz",
-  data: function () {
-  	return {
-  		active: 1,
-  	}
-  },
   components: {
   	Shop,
   },
   methods: {
   	choozeType: function(id) {
-  		this.active=id;
+  		this.$store.dispatch("setType", {id: id});
   	}
   	
   }

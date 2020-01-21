@@ -3,9 +3,9 @@ include ../../node_modules/bemto.pug/bemto.pug
 +b.banner
 	+e.IMG.background(src="/images/hero.jpg")
 	+e.H1.title 
-		| Огромные скидки на донаты!
-		+e.SPAN.procent до 90%
-	+e.P.descr Успейте поймать удачу
+		| {{ $store.state.html.banner.title }}
+		+e.SPAN.procent {{ $store.state.html.banner.discount }}
+	+e.P.descr {{ $store.state.html.banner.description }}
 	+e.arrow
 		svgi(name="arrow")
 </template>
