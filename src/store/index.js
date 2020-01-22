@@ -18,6 +18,7 @@ function builder(data){
       link: 'http://localhost:1337',
       loading: 0,
       scrollToTop: 0,
+      About: [],
     },
     mutations: {
       addLoading(state){
@@ -33,9 +34,24 @@ function builder(data){
     actions: {
       getTypes: function({state,dispatch,commit}){
         commit("addLoading");
-        axios.get('types').then((resp)=>{
-          state.Types = resp.data;
-          state.type = resp.data[0];
+        axios.post('graphql', {
+          query: `
+            {
+              types {
+                name
+                icon
+                id
+                servers {
+                  id
+                  name
+                }
+              }
+            }
+          `
+        }).then((resp)=>{
+          console.log(resp.data);
+          state.Types = resp.data.data.types;
+          state.type = resp.data.data.types[0];
           dispatch("setServers");
           commit("removeLoading");
         })
@@ -45,12 +61,36 @@ function builder(data){
         state.server = state.type.servers[0];
         dispatch("setItems");
       },
-      setItems: function({state}){
+      setItems: function({state,commit}){
         let serverId = state.server.id;
-        let items = (state.type.items).filter((item)=>{
-          return item.server == serverId;
-        });
-        state.Items = items;
+        commit("addLoading");
+        axios.post('graphql', {
+          query: `
+            {
+              items(where: {server: ` +serverId + `, type: ` + state.type.id + `}) {
+                name
+                price
+                discount
+                back {
+                  url
+                }
+                hero {
+                  url
+                }
+                id
+                server {
+                  id
+                }
+                type {
+                  id
+                }
+              }
+            }
+          `
+        }).then(resp=>{
+          state.Items = resp.data.data.items;
+          commit("removeLoading");
+        })
       },
       changeServer: function({state, dispatch}, payload){
         let items = (state.type.servers).filter((item)=>{
@@ -75,6 +115,16 @@ function builder(data){
 
         })
       },
+      setAbout: function({state, commit}, payload){
+        let id = payload.id;
+        commit("addLoading");
+        return new Promise((resolve)=>{
+          axios.get("items/" + id).then(resp=>{
+            resolve(resp.data);
+            commit("removeLoading");
+          })
+        })
+      }
     },
     modules: {}
   });

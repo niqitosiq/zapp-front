@@ -14,6 +14,8 @@ include ../../node_modules/bemto.pug/bemto.pug
           :discount="descr.discount"
           :id="descr.id"
           :dir="descr.dir"
+          :back="descr.back.url"
+          :hero="descr.hero.url"
           full=true
         )
         +e.buynow Купить
@@ -53,13 +55,13 @@ include ../../node_modules/bemto.pug/bemto.pug
   },
   data: function () {
     return {
-      descr: '',
+      descr: {},
     }
   },
   mounted(){
-    let data = this.$store.state.Items;
-    console.log(data)
-    this.descr = data.filter((item)=>{console.log(item); return (item.id == this.$route.params.id)})[0]
+    this.$store.dispatch("setAbout", {id:this.$route.params.id}).then(data=>{
+      this.descr = data;
+    });
   }
 };
 </script>
