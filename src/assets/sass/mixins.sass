@@ -9,9 +9,9 @@
   @if $horizontal != null
     justify-content: $horizontal
 
-=font($alias, $name)
+=font($alias, $name, $weight: normal)
   @font-face
     font-family: $alias
     src: url("fonts/" + $name + ".woff2") format("woff2"), url("fonts/" + $name + ".woff") format("woff")
-    font-weight: normal
+    font-weight: $weight
     font-style: normal

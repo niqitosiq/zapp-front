@@ -3,6 +3,8 @@ include ../../node_modules/bemto.pug/bemto.pug
 .home
 	.container
 		Banner
+		
+		
 	.container
 		Quiz
 </template>

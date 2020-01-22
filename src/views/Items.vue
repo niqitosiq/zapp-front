@@ -13,7 +13,8 @@ include ../../node_modules/bemto.pug/bemto.pug
 				:discount="item.discount"
 				:id="item.id"
 				:dir="item.dir"
-				:key="changedType + '/' + changedServer + '/' + item.id"
+				:back="item.back.url"
+				:hero="item.hero.url"
 				full=false
 			)
 		+e.wrapper(v-else)
@@ -41,21 +42,13 @@ export default {
   	Item
   },
   computed: {
-  	changedType: function(){
-  		return this.$store.state.type;
-  	},
-  	changedServer: function(){
-  		return this.$store.state.server;
+  	scroll: function(){
+  		return this.$store.state.scrollToTop;
   	}
   },
   watch: {
-  	changedType: function () {
+  	scroll: function () {
   		this.$scrollTo("#smooth");
-  		this.op();
-  	},
-  	changedServer: function () {
-  		this.$scrollTo("#smooth");
-  		this.op();
   	}
   },
   mounted(){

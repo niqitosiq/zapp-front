@@ -6,14 +6,11 @@ import axios from "axios";
 
 Vue.config.productionTip = false;
 
-axios.defaults.baseURL  = "/"
+axios.defaults.baseURL  = "http://localhost:1337/"
 
 
-axios.get("data.json").then((resp)=>{
-	new Vue({
-	  router,
-	  store: store(resp.data),
-	  render: h => h(App)
-	}).$mount("#app");
-
-})
+new Vue({
+  router,
+  store: store,
+  render: h => h(App)
+}).$mount("#app");

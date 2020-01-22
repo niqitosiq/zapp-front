@@ -31,8 +31,14 @@
     	"1": {
     		"1": [
     			{ "name": "Премиум сурвивал", "price": 300, "discount": 50, "id": 1, "dir": "1"},
-		    	{ "name": "Премиум2", "price": 350, "discount": 100, "id": 2, "dir": "1"},
-		    	{ "name": "Премиум2", "price": 350, "discount": 100, "id": 3, "dir": "1"}
+          { "name": "Премиум2", "price": 350, "discount": 100, "id": 2, "dir": "1"},
+          { "name": "Премиум2", "price": 350, "discount": 100, "id": 3, "dir": "1"},
+          { "name": "Премиум2", "price": 350, "discount": 100, "id": 4, "dir": "1"},
+          { "name": "Премиум2", "price": 350, "discount": 100, "id": 5, "dir": "1"},
+          { "name": "Премиум2", "price": 350, "discount": 100, "id": 6, "dir": "1"},
+          { "name": "Премиум2", "price": 350, "discount": 100, "id": 7, "dir": "1"},
+          { "name": "Премиум2", "price": 350, "discount": 100, "id": 8, "dir": "1"},
+          { "name": "Премиум2", "price": 350, "discount": 100, "id": 9, "dir": "1"}
 		    ],
 		    "2": [
     			{ "name": "Премиум", "price": 300, "discount": 50, "id": 1, "dir": "1"},

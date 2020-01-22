@@ -21,6 +21,9 @@ import VModal from 'vue-js-modal';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import Header from "@/components/Header.vue";
+import VueLazyload from 'vue-lazyload'
+
+Vue.use(VueLazyload)
 Vue.use(VModal)
 Vue.component("svgi", svgi);
 Vue.component("Loading", Loading);
@@ -28,8 +31,6 @@ Vue.component("Loading", Loading);
 export default {
   name: "App",
   created(){
-    this.$store.dispatch("setType", {id:1});
-    this.$store.dispatch("setServer", {id:1});
   },
   components: {
     Header
@@ -40,10 +41,10 @@ export default {
 </script>
 <style lang="sass">
 @import "@/assets/sass/all";
-+font("Qanelas-Bold", "Qanelas-Bold")
-+font("Qanelas-SemiBold", "Qanelas-SemiBold")
-+font("Qanelas-Regular", "Qanelas-Regular")
-+font("Qanelas-Light", "Qanelas-Light")
++font("Qanelas", "Qanelas-Bold", 700)
++font("Qanelas", "Qanelas-SemiBold", 600)
++font("Qanelas", "Qanelas-Regular", 400)
++font("Qanelas", "Qanelas-Light", 100)
 
 @import 'node_modules/normalize-scss/sass/normalize';
 +normalize()
@@ -64,7 +65,6 @@ body
   justify-content: space-between
   align-items: center
   min-width: 260px
-
   &.row
     flex-direction: column
     align-items: flex-start

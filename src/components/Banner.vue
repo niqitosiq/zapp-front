@@ -1,28 +1,47 @@
 <template lang="pug">
 include ../../node_modules/bemto.pug/bemto.pug
-+b.banner
-	+e.IMG.background(src="/images/hero.jpg")
+  		
++b.banner(v-if="visible")
+	+e.IMG.background(v-lazy="imgUrl")
 	+e.H1.title 
-		| {{ $store.state.html.banner.title }}
-		+e.SPAN.procent {{ $store.state.html.banner.discount }}
-	+e.P.descr {{ $store.state.html.banner.description }}
+		| {{ banner.title }}
+		+e.SPAN.procent {{ banner.discount }}
+	+e.P.descr {{ banner.description }}
 	+e.arrow
 		svgi(name="arrow")
 </template>
 
 <script>
+
 export default {
   name: "Banner",
   data: function () {
   	return {
-  		
+  		//'http://localhost:1337' + this.$store.state.banner.background.url
+  		//imgUrl: '',
+  		visible: false,
+  		banner: {},
   	}
+  },
+  props: {
+  	imgUrl: String,
+  },
+  methods: {},
+  mounted(){
+  	this.$store.dispatch("getBanner").then((data)=>{
+  		this.banner = data;
+  		let url = data.background.url;
+  		if (url){
+  			this.imgUrl = 'http://localhost:1337' + url;
+  			this.visible =  true;
+  		}
+  	})
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="sass">
+<style lang="sass">
 @import "@/assets/sass/all";
 .banner
 	margin-top: 30px

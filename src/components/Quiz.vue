@@ -1,13 +1,18 @@
 <template lang="pug">
 include ../../node_modules/bemto.pug/bemto.pug
-+b.quiz
++b.quiz(v-if="$store.state.Types.length>0")
 	+e.sidebar
-		+e.item(v-for="item in $store.state.html.types" :class="{active: item.id===$store.state.type}" @click="choozeType(item.id)")
+		+e.item(
+			v-for="item in $store.state.Types" 
+			:class="{active: item.id===$store.state.type.id}" 
+			@click="choozeType(item.id)"
+		)
 			+e.icon
 				svgi(:name="item.icon")
 			+e.H2.name {{item.name}}
 			+e.arrow
 				svgi(name="arrow")
+
 		
 	+e.main
 		Shop
@@ -25,9 +30,12 @@ export default {
   },
   methods: {
   	choozeType: function(id) {
-  		this.$store.dispatch("setType", {id: id});
+  		this.$store.commit("scroll");
+  		this.$store.dispatch("changeType", {id: id});
   	}
-  	
+  },
+  mounted(){
+  	this.$store.dispatch("getTypes");
   }
 };
 </script>

@@ -2,8 +2,8 @@
 include ../../node_modules/bemto.pug/bemto.pug
 .item(:ref="id" @click="about(id);" :class="{notfull: full===false}")
 	.image
-		img.n1(:src='"/items/" + dir + "/2.png"')
-		img.n2(:src='"/items/" + dir + "/1.png"')
+		img.n1(:src="'http://localhost:1337' + back")
+		img.n2(:src="'http://localhost:1337' + hero")
 	.descr
 		h4.name {{name}}
 		p.old(v-if="discount!=0") 
@@ -22,12 +22,12 @@ export default {
   	"discount": Number,
   	"id": Number,
   	"dir": String,
+  	"back": String,
+  	"hero": String,
   	"full": Boolean
   },
   data: function () {
-  	return {
-
-  	}
+  	return {}
   },
   methods: {
   	about: function (idref) {
