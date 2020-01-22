@@ -20,6 +20,8 @@ include ../../node_modules/bemto.pug/bemto.pug
         )
         +e.buynow Купить
       +e.description
+        md {{descr.article}}
+      //
         +e.H3.title Возможности набора:
         +b.UL.kit
           +e.LI.item 
@@ -46,12 +48,15 @@ include ../../node_modules/bemto.pug/bemto.pug
 </template>
 
 <script>
-  import Item from "@/components/Item.vue";
+import Item from "@/components/Item.vue";
+import md from 'vue-markdown';
 
-  export default {
+
+export default {
   name: "about",
   components: {
-   Item
+   Item,
+   md
   },
   data: function () {
     return {
