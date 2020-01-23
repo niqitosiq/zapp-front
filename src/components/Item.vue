@@ -50,8 +50,27 @@ export default {
 	cursor: pointer
 	&.notfull
 		height: 350px
+		+below(780px)
+			height: 270px
+		+below(600px)
+			height: 300px
 	&:nth-child(3n+0)
 		margin-right: 0
+	+below(850px)
+		width: calc(50% - 10px)
+		margin-right: auto
+		&:nth-child(2n+0)
+			margin-right: 0
+		&:nth-child(3n+0)
+			margin-right: auto
+	+below(770px)
+		height: 300px
+		
+	+below(480px)
+		width: 100%
+		margin-right: 0
+		margin-bottom: 22px
+		
 	p
 		margin: 0
 	.name
@@ -84,19 +103,23 @@ export default {
      			animation: item1 3s ease-in-out infinite alternate
 			&.n2
      			animation: item2 3s ease-in-out infinite alternate
-		
+		+below(770px)
+			.buynow
+				display: none
+			
 	&.notfull:hover
-		.old
-			opacity: 0
-		.new
-			transform: translateY(-40px)
-		.buynow
-			transform: translateY(0%)
-		.image img
-			&.n1
-				transform: translateY(-25px)
-			&.n2
-				transform: translate(-50%, -45px)
+		+above(770px)
+			.old
+				opacity: 0
+			.new
+				transform: translateY(-40px)
+			.buynow
+				transform: translateY(0%)
+			.image img
+				&.n1
+					transform: translateY(-25px)
+				&.n2
+					transform: translate(-50%, -45px)
 	.descr
 		position: absolute
 		bottom: 0
@@ -108,6 +131,9 @@ export default {
 		overflow: hidden
 		color: $light
 		background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%,rgba(255, 255, 255, 0) 30%,$accent 60%, $accent 80%)
+		+below(770px)
+			overflow: visible
+			
 	.buynow
 		width: 100%
 		position: absolute
@@ -123,6 +149,12 @@ export default {
 		transform: translateY(100%)
 		transition: transform ease-in-out .4s .1s, background ease-in-out .3s
 		border-radius: 20px 20px 0 0 
+		+below(770px)
+			position: static
+			transform: translateY(0)
+			border-radius: 20px
+			margin-bottom: -15px
+
 		&:hover
 			background: #63ABFF
 	.image
@@ -134,7 +166,7 @@ export default {
 			width: 100%
 			height: 100%
 			position: absolute
-			object-fit: cover
+			object-fit: contain
 			margin-bottom: inherit
 			&.n1
 				transform: translateY(-0px)

@@ -15,7 +15,6 @@ function builder(data){
       Types: [],
       Servers: [],
       banner: '',
-      link: 'http://localhost:1337',
       loading: 0,
       scrollToTop: 0,
       About: [],

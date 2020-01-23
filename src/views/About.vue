@@ -21,6 +21,7 @@ include ../../node_modules/bemto.pug/bemto.pug
         +e.buynow Купить
       +e.description
         md {{descr.article}}
+        +e.buynow._m Купить
       //
         +e.H3.title Возможности набора:
         +b.UL.kit
@@ -88,14 +89,28 @@ export default {
     width: 100%
     margin-top: 60px
     +flex
+    +below(760px)
+      flex-direction: column
+      justify-content: center
+      align-items: center
+
     .item
       flex-shrink: 0
   &__left
     width: 320px
     flex-shrink: 0
-
+    +below(370px)
+      width: 100%
+  
   &__description
     margin-left: 60px
+    +below(760px)
+      margin-left: 0
+      width: 320px
+    +below(370px)
+      width: 100%
+      
+      
   &__buynow
     width: 100%
     height: 50px
@@ -105,24 +120,29 @@ export default {
     border-radius: 20px
     cursor: pointer
     transition: background ease-in-out .3s
+    +below(760px)
+      display: none
+    &_m
+      display: none
+      +below(760px)
+        display: flex
+        
     &:hover
       background: $accentb
-  .kit
+  ul
     padding-left: 0
-    &__item
+    li
       list-style: none
       padding-left: 0
-      margin-bottom: 30px
-
-    &__command
+      margin-bottom: 20px
       background: #CFE5FF
       padding-top: 5px
       padding-bottom: 5px
       padding-left: 20px
       padding-right: 20px
       margin-right: 20px
-    &__descr
-      color: $grayt
+      display: block
+      width: max-content
   &__title
     margin-bottom: 50px
 </style>

@@ -21,10 +21,8 @@ export default {
   		//imgUrl: '',
   		visible: false,
   		banner: {},
+  		imgUrl: ''
   	}
-  },
-  props: {
-  	imgUrl: String,
   },
   methods: {},
   mounted(){
@@ -54,6 +52,10 @@ export default {
 	padding-right: 30px
 	padding-top: 40px
 	padding-bottom: 40px
+	+below(480px)
+		padding-bottom: 20px
+		padding-top: 20px
+		
 	&__background
 		position: absolute
 		width: 100%
@@ -68,6 +70,9 @@ export default {
 		font-size: 36px
 		font-weight: 600
 		width: 340px
+		+below(480px)
+			width: 100%
+			font-size: 28px
 	&__procent
 		font-size: 18px
 		font-weight: 800
@@ -81,6 +86,9 @@ export default {
 		margin-left: 10px
 		position: relative
 		top: 5px
+		+below(480px)
+			font-size: 16px
+			
 	&__descr
 		font-size: 20px
 		color: #DCDCDC
@@ -88,4 +96,8 @@ export default {
 		transform: rotate(90deg)
 		font-size: 20px
 		margin-top: 30px
+		+below(480px)
+			margin-top: 10px
+			
+			
 </style>

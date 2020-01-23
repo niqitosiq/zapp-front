@@ -3,7 +3,7 @@ include ../../node_modules/bemto.pug/bemto.pug
 +b.items
 	+e.H3.title Выберите товар:
 	+e.P.tip Нажмите на товар, чтобы узнать о нём больше
-	.smooth(ref="smooth" id="smooth")
+	.smooth(ref="smooth")
 		//transition-group(name="fadeD").items__wrapper(v-if="$store.state.Items.length > 0")
 		+e.wrapper(v-if="$store.state.Items.length > 0")
 			Item(
@@ -81,11 +81,23 @@ export default {
 		padding-right: 100px
 		text-align: center
 		padding-bottom: 40px
+		+below(720px)
+			font-size: 24px
+			padding-left: 50px
+			padding-right: 50px
+		+below(480px)
+			padding-left: 0
+			padding-right: 0
+			
+			
 		a
 			color: $accent
 	&__wrapper
 		width: 100%
 		+flex
 		flex-wrap: wrap
-		margin-top: 60px
+		+below(770px)
+			padding-bottom: 30px
+			
+			
 </style>
