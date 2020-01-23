@@ -3,12 +3,14 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Items from "@/views/Items.vue";
 import About from "@/views/About.vue";
+import Payment from "@/views/Payment.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
 
   {path: '/about/:id', component: About, name: "about"},
+  {path: '/payment/:id', component: Payment, name: "payment"},
   {
     path: "/",
     name: "home",
@@ -17,6 +19,7 @@ const routes = [
     	{path: '', component: Items},
     ]
   },
+
 
 ];
 

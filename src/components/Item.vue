@@ -10,7 +10,7 @@ include ../../node_modules/bemto.pug/bemto.pug
 			| {{price}} рублей
 		p.new
 			| {{ price/100*discount }} рублей
-		.buynow
+		.buynow(@click.stop="pay(id)")
 			| Купить
 </template>
 <script>
@@ -33,7 +33,12 @@ export default {
   	about: function (idref) {
   		if (!this.full){
 	  		this.$router.push("/about/" + idref)
+	  	} else {
+	  		this.pay(idref);
 	  	}
+  	},
+  	pay: function (idref) {
+  		this.$router.push("/payment/" + idref)
   	}
   },
 };

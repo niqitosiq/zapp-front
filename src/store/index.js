@@ -123,6 +123,18 @@ function builder(data){
             commit("removeLoading");
           })
         })
+      },
+      getPayment({commit},payload){
+        let id = payload.id;
+        commit("addLoading");
+        return new Promise((resolve)=>{
+          axios.post("graphql", {
+            query: "{\n  item(id: " + id + ") {\n    id\n    name\n    price\n    discount\n    type {\n      name\n    }\n    server {\n      name\n    }\n  }\n}"
+          }).then(resp=>{
+            resolve(resp.data.data.item);
+            commit("removeLoading");
+          })
+        })
       }
     },
     modules: {}
