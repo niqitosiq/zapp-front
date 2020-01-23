@@ -18,10 +18,10 @@ include ../../node_modules/bemto.pug/bemto.pug
           :hero="descr.hero.url"
           full=true
         )
-        +e.buynow Купить
+        +e.buynow(@click="pay(descr.id)") Купить
       +e.description
         md {{descr.article}}
-        +e.buynow._m Купить
+        +e.buynow._m(@click="pay(descr.id)") Купить
       //
         +e.H3.title Возможности набора:
         +b.UL.kit
@@ -68,6 +68,11 @@ export default {
     this.$store.dispatch("setAbout", {id:this.$route.params.id}).then(data=>{
       this.descr = data;
     });
+  },
+  methods: {
+    pay: function (idref) {
+      this.$router.push("/payment/" + idref)
+    }
   }
 };
 </script>

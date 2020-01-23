@@ -135,7 +135,8 @@ function builder(data){
             commit("removeLoading");
           })
         })
-      }
+      },
+      
     },
     modules: {}
   });
